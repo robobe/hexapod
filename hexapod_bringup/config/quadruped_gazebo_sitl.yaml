@@ -1,0 +1,15 @@
+session_name: quadruped
+windows:
+  - window_name: sitl and gazebo
+    layout: tiled
+    shell_command_before:
+      - killall gzserver
+      - killall gzclient
+      - cd /home/user/projects/hexapod/
+    panes:
+      - shell_command: # pane no. 1
+          - source env.sh
+          - gazebo --verbose quadruped.world
+      
+
+
