@@ -294,6 +294,8 @@ local rest_angles = { 45, -90, 40,      -- front right leg (coxa, femur, tibia)
                       45, -90, 40}      -- back right leg (coxa, femur, tibia)
 
 function update()
+    if not ahrs:healthy() then return update, 1000 end
+    gcs:send_text(0, "quadruped simulation run")
     local throttle = vehicle:get_control_output(control_input_throttle) * xy_travel_max
     local gait_direction
     if throttle > 0 then

@@ -10,6 +10,15 @@ windows:
       - shell_command: # pane no. 1
           - source env.sh
           - gazebo --verbose quadruped.world
+      - shell_command:
+          - cd hexapod_bringup
+          - ./bin/ardurover -S --model gazebo-rover \
+            --speedup 1 \
+            --defaults /home/user/projects/hexapod/hexapod_bringup/params/quadruped.parm \
+            -I1
+      - shell_command:
+          - sleep 3
+          - mavproxy.py --master tcp:127.0.0.1:5760 --out=udp:127.0.0.1:14550
       
 
 
