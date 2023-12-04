@@ -1,0 +1,6 @@
+
+## jupyter
+
+```
+jupyter lab
+```
